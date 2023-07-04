@@ -1,0 +1,21 @@
+.logo{
+
+  width: 269px;
+  margin: auto;
+  padding: 50px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.align-logo {
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+
+
+
+
