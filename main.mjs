@@ -1,3 +1,50 @@
+import { DOCUMENTATION } from "./constants.js";
+
+const inputbuscar = document.querySelector(".menu-buscar");
+
+
+
+const sellerlist = document.querySelector('.menu-content');
+
+const getsellertemplate = (seller) => {
+  return `<li class="seller-element">${seller}</li>`;
+};
+
+const setupsellerlist = () => {
+  const sellers = DOCUMENTATION.filter((doc) => doc.seller);
+  const sellersul = document.createElement("ul");
+
+  sellers.forEach((seller) => {
+    const sellerstemplate = getsellertemplate(seller.seller);
+    sellersul.innerHTML += sellerstemplate;
+  });
+
+  sellerlist.appendChild(sellersul);
+};
+
+setupsellerlist();
+
+const normalizeText = (text) => text.trim().tolowerCase()
+
+const handleBuscar = (event) => {
+  const { value } = event.target.value;
+  const normalizeValue = normalizeText(value)
+
+  DOCUMENTATION.filter(doc => {
+    const normalizeseller = normalizeText(doc.seller)
+    return normalizeseller.includes(normalizeValue)
+  })
+
+  const searchul = document.createElement("ul")
+  filteredDocumentation.forEach(doc => { searchul.innerHTML(getsellertemplate) })
+
+  searchBlockElement.append(searchul)
+}
+
+
+inputbuscar.addEventListener("input", handleBuscar);
+
+
 const products = [
   {
     name: 'Flat White', price: 5.50,
@@ -89,7 +136,7 @@ const products = [
 const getproducttemplate = (name, seller, stars, reviews, image) => {
   return `<div class="products-info">
     <h2> ${name}</h2 >
-    <h3>${seller}</h3>
+    <h3>Distribuidor: ${seller}</h3>
     <h3>${stars}</h3>
     <h3>${reviews}</h3>
     <img src=${image} />
